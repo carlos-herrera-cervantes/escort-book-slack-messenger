@@ -3,6 +3,7 @@ from json import loads
 from confluent_kafka import Consumer
 
 from settings.kafka import KafkaClient, KafkaTopics
+from processors.strategy_manager import initialize_manager
 
 
 async def listen() -> None:
@@ -31,6 +32,7 @@ async def listen() -> None:
                 continue
 
             parsed_message: dict = loads(message.value().decode('utf-8'))
+            await initialize_manager(message.topic()).run_task(parsed_message)
             print(f'Processed message: {parsed_message}')
     except KeyboardInterrupt:
         print('Gracefully stop the consumer')

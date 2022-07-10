@@ -9,7 +9,7 @@ from settings.mongo import MongoClient as MongoSettings
 class MongoClient(metaclass=SingletonMeta):
 
     def __init__(self):
-        self.__db = MongoSettings.DEFAULT_DB
+        self.__db = MongoSettings.DEFAULT_DB.value
 
     def connect(self) -> None:
         print('Successful connected to MongoDB')
