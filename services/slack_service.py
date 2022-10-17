@@ -8,11 +8,11 @@ class SlackService:
     def __init__(self, http_client: http.client):
         self.__http_client = http_client
 
-    async def send_message(self, host: str, path: str, message: str) -> None:
+    async def send_message(self, host: str, path: str, request_body: dict) -> None:
         conn = self.__http_client.HTTPSConnection(host)
 
         headers: dict = {'Content-Type': 'application/json'}
-        body: str = json.dumps({'text': message})
+        body: str = json.dumps(request_body)
 
         conn.request('POST', path, body, headers)
 
@@ -22,4 +22,4 @@ class SlackService:
         response = await future
 
         print(f'Message send to slack with code: {response.status}')
-        print(f'With content: {message}')
+        print(f'With content: {request_body}')
