@@ -1,0 +1,27 @@
+name: Run unit tests
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+          
+      - name: Switch to Current Branch
+        run: git checkout ${{ env.BRANCH }}
+              
+      - name: Set up Python 3.9.14
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9.14
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: python3 -m unittest -v

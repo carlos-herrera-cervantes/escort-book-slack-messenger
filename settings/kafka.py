@@ -11,3 +11,5 @@ class KafkaTopics(Enum):
     SERVICE_CREATED = 'service-created'
     SERVICE_STARTED = 'service-started'
     SERVICE_PAID = 'operations-statistics'
+    CUSTOMER_RELEASE_PAYMENT = 'escort-book-customer-release-payment'
+    ESCORT_RELEASE_PAYMENT = 'escort-book-escort-release-payment'

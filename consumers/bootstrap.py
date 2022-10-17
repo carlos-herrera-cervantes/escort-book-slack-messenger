@@ -19,6 +19,8 @@ async def listen() -> None:
         KafkaTopics.SERVICE_CREATED.value,
         KafkaTopics.SERVICE_STARTED.value,
         KafkaTopics.SERVICE_PAID.value,
+        KafkaTopics.ESCORT_RELEASE_PAYMENT.value,
+        KafkaTopics.CUSTOMER_RELEASE_PAYMENT.value,
     ])
 
     try:

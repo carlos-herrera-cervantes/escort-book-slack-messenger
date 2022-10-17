@@ -14,6 +14,7 @@ class Service(Document):
     timeMeasurementUnit: str = StringField()
     details: list = ListField()
     paymentDetails: list = ListField()
+    partialPayment: bool = BooleanField()
     createdAt: datetime = DateTimeField()
     updatedAt: datetime = DateTimeField()
     meta = {'collection': 'services'}
