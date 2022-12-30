@@ -16,7 +16,7 @@ class CustomerRepository:
         rows: list = conn.fetchall()
 
         try:
-            customer_profile: CustomerProfile = CustomerProfile()
+            customer_profile = CustomerProfile()
             customer_profile.customer_id = rows[0][0]
             customer_profile.first_name = rows[0][1]
             customer_profile.last_name = rows[0][2]

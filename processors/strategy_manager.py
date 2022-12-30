@@ -19,18 +19,18 @@ class StrategyManager:
         MongoClient().connect()
 
         postgres_client: dict = PostgresClient().connect()
-        service_status: ServiceStatus = ServiceStatus(
+        service_status = ServiceStatus(
             ServiceRepository(Service),
             EscortRepository(postgres_client['escort_db']),
             CustomerRepository(postgres_client['customer_db']),
             SlackService(http.client),
         )
-        customer_payment_release_memo: CustomerPaymentReleaseMemo = CustomerPaymentReleaseMemo(
+        customer_payment_release_memo = CustomerPaymentReleaseMemo(
             ServiceRepository(Service),
             CustomerRepository(postgres_client['customer_db']),
             SlackService(http.client),
         )
-        escort_payment_release_memo: EscortPaymentReleaseMemo = EscortPaymentReleaseMemo(
+        escort_payment_release_memo = EscortPaymentReleaseMemo(
             ServiceRepository(Service),
             EscortRepository(postgres_client['escort_db']),
             SlackService(http.client),
