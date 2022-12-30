@@ -16,7 +16,7 @@ class EscortRepository:
         rows: list = conn.fetchall()
 
         try:
-            escort_profile: EscortProfile = EscortProfile()
+            escort_profile = EscortProfile()
             escort_profile.escort_id = rows[0][0]
             escort_profile.first_name = rows[0][1]
             escort_profile.last_name = rows[0][2]

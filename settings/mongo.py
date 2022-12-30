@@ -3,4 +3,4 @@ from enum import Enum
 
 
 class MongoClient(Enum):
-    DEFAULT_DB = os.getenv('DEFAULT_DB')
+    MONGO_URI = os.getenv('DEFAULT_DB')

@@ -9,11 +9,11 @@ from settings.mongo import MongoClient as MongoSettings
 class MongoClient(metaclass=SingletonMeta):
 
     def __init__(self):
-        self.__db = MongoSettings.DEFAULT_DB.value
+        self.__db = MongoSettings.MONGO_URI.value
 
     def connect(self) -> None:
         print('Successful connected to MongoDB')
-        mongoengine.connect(self.__db)
+        mongoengine.connect(host=self.__db)
 
 
 class PostgresClient(metaclass=SingletonMeta):
@@ -23,7 +23,7 @@ class PostgresClient(metaclass=SingletonMeta):
             f'dbname={PostgresDB.ESCORT.value} ' +
             f'user={PostgresSettings.USER_DB.value} ' +
             f'password={PostgresSettings.PASSWORD_DB.value} ' +
-            f'host={PostgresSettings.HOST_DB.value} ' +
+            f'host={PostgresSettings.ESCORT_DB_HOST.value} ' +
             f'port={PostgresSettings.PORT_DB.value}'
         )
 
@@ -31,7 +31,7 @@ class PostgresClient(metaclass=SingletonMeta):
             f'dbname={PostgresDB.CUSTOMER.value} ' +
             f'user={PostgresSettings.USER_DB.value} ' +
             f'password={PostgresSettings.PASSWORD_DB.value} ' +
-            f'host={PostgresSettings.HOST_DB.value} ' +
+            f'host={PostgresSettings.CUSTOMER_DB_HOST.value} ' +
             f'port={PostgresSettings.PORT_DB.value}'
         )
 
